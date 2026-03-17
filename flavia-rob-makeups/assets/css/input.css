@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
 @theme {
+
+    /*breakpoints*/
+    --breakpoint-*: initial;
+    --breakpoint-md: 40rem;
+    --breakpoint-sm: 30rem;
+
     /*Cores*/
     --color-primary: rgb(15 28 36);
     --color-secondary: rgb(34 49 58);
