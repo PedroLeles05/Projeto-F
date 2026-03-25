@@ -13,16 +13,37 @@
     
 <body>
     <!--NavBar-->
-    <header class="flex justify-end fixed z-50 p-12 w-full">
+    <header class="flex justify-end items-center fixed z-50 p-6 md:p-12 top-0 left-0 right-0 bg-primary/0 transition-all duration-500">
         <nav class="flex">
-            <ul class="flex gap-5 font-body text-xl text-white/85 transition cursor-pointer">
-                <li class="transition hover:text-white">Home</li>
-                <li class="transition hover:text-white">Sobre</li>
-                <li class="transition hover:text-white">Galeria</li>
-                <li class="transition hover:text-white">Serviços</li>
-                <li class="transition hover:text-white">Cursos</li>
-            </ul>
+                <ul class="flex gap-5 font-body text-xl text-white/85 transition cursor-pointer max-md:hidden">
+                    <li class="transition hover:text-white"><a href="index.html">Home</a></li>
+                    <li class="transition hover:text-white"><a href="sobre.html">Sobre</a></li>
+                    <li class="transition hover:text-white"><a href="galeria.html">Galeria</a></li>
+                    <li class="transition hover:text-white"><a href="servicos.html">Serviços</a></li>
+                    <li class="transition hover:text-white"><a href="cursos.html">Cursos</a></li>
+                </ul>
+        
+            <button id="btn_menu" class="group hidden max-md:block p-3 focus:outline-none z-50">
+                <div class="w-8 h-6 flex flex-col justify-between items-center relative">
+                    <span class="w-full h-0.5 bg-white/85 rounded-full transition-all duration-300 origin-center group-[.open]:rotate-45 group-[.open]:translate-y-[11px]"></span>
+                    
+                    <span class="w-full h-0.5 bg-white/85 rounded-full transition-opacity duration-300 group-[.open]:opacity-0"></span>
+                    
+                    <span class="w-full h-0.5 bg-white/85 rounded-full transition-all duration-300 origin-center group-[.open]:-rotate-45 group-[.open]:-translate-y-[11px]"></span>
+                </div>
+            </button>
         </nav>
+
+        <aside id="menu_mobile" class="fixed inset-0 translate-x-full bg-primary/95 transition-transform duration-300 z-40 flex flex-col justify-center items-center cursor-pointer">
+            <ul class="flex flex-col gap-4 text-white/85 text-3xl text-center">
+                <li class="transition hover:text-white"><a href="index.html">Home</a></li>
+                <li class="transition hover:text-white"><a href="sobre.html">Sobre</a></li>
+                <li class="transition hover:text-white"><a href="galeria.html">Galeria</a></li>
+                <li class="transition hover:text-white"><a href="servicos.html">Serviços</a></li>
+                <li class="transition hover:text-white"><a href="cursos.html">Cursos</a></li>
+            </ul>
+        </aside>
+
     </header>
 
     <!--hero-->
@@ -62,7 +83,7 @@
         </div>
         
         <!--Cards-Serviços-->
-        <div class="grid grid-cols-3 w-fit h-fit mx-auto gap-x-18 gap-y-[100px] py-16">
+        <div class="grid grid-cols-3 w-fit h-fit gap-x-18 gap-y-[100px] py-16">
 
             <!--card-1-->
             <div class="flex flex-col bg-primary w-[400px] h-[383px] gap-6 px-8 py-6 drop-shadow-xl drop-shadow-white/5">
@@ -134,7 +155,7 @@
 
    <!--Ver mais-->
    <section class="bg-linear-to-b from-secondary to-primary w-full h-[244px]">
-        <div class="flex justify-center relative w-full py-[50px] transition cursor-pointer">
+        <div class="flex justify-center w-full py-[50px] transition cursor-pointer">
                 <p class="font-body text-xl text-white/65 border border-white/65 px-6 py-1 transition hover:text-white hover:border hover:border-white/80 hover:scale-102">Ver Mais</p>
         </div>
    </section>
@@ -243,6 +264,8 @@
             </a>
         </div>
     </footer>
+
+    <script src="assets/js/menu.js"></script>
 
 </body>
 </html>

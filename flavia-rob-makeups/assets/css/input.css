@@ -21,9 +21,12 @@
     --rounded-default: 10px;
 
     /*Images*/
+    --background-image-flavia: url("../images/flavia.png");
+    --background-image-curso: url("../images/curso.jpg");
+    --background-image-galeria: url("../images/galeria.jpg");
     --background-image-maquiagem: url("../images/Maquiagem.jpg");
     --background-image-circo: url("../images/Circo.jpg");
-    --background-image-flavia: url("../images/flavia.png");
+    --background-image-garoto: url("../images/garoto.jpg");
     --background-image-mqm: url("../images/MQM.jpg");
 }
 

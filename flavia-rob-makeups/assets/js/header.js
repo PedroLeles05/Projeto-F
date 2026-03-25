@@ -5,8 +5,8 @@ export function initHeader(){
             if(window.innerWidth < 640)return;
 
             if(window.scrollY > 500){
-                header.classList.add('bg-primary/90', 'backdrop-blur-sm');
-                header.classList.remove('bg-transparent');
+                header.classList.add('bg-primary/90', 'backdrop-blur-sm', 'p-9');
+                header.classList.remove('bg-transparent', 'md:p-12');
                 
                 if (window.scrollY > 2000) {
                     header.classList.remove('bg-primary/90');
@@ -19,7 +19,7 @@ export function initHeader(){
                 }
             }
             else{
-                header.classList.remove('bg-primary/90', 'bg-secondary/90', 'backdrop-blur-sm');
-                header.classList.add('bg-transparent');}
+                header.classList.remove('bg-primary/90', 'bg-secondary/90', 'backdrop-blur-sm', 'p-9');
+                header.classList.add('bg-transparent', 'md:p-12');}
         });
 }
