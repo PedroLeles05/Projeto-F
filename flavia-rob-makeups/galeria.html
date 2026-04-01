@@ -11,7 +11,7 @@
 </head>
 
     
-<body>
+<body class="relative">
     <!--NavBar-->
     <header class="flex justify-end items-center fixed z-50 p-6 md:p-12 top-0 left-0 right-0 bg-primary/0 transition-all duration-500">
         <nav class="flex">
@@ -47,7 +47,7 @@
     </header>
 
     <!--hero-->
-    <section class="w-full h-[700px] relative flex justify-center items-center bg-galeria bg-cover bg-position-[50%_40%] bg-fixed">
+    <section id="hero" class="w-full h-[700px] relative flex justify-center items-center bg-galeria bg-cover bg-position-[50%_40%] bg-fixed">
         <div class="absolute bg-black/40 inset-0"></div>
         <div class="absolute top-50% left-50% w-[600px] h-[400px] rounded-full bg-white/8 blur-[120px] z-0 pointer-events-none"></div>
 
@@ -69,52 +69,87 @@
     </section>
 
     <!--galeria-->
-    <section class="bg-linear-to-b from-secondary to-primary w-full h-fit py-[100px] px-12 gap-[100px] flex flex-col justify-center items-center">
+    <section class=" relative bg-linear-to-b from-secondary to-primary w-full h-auto py-[100px] px-12 gap-[100px] flex flex-col justify-center items-center">
+        
+        <!-- lightbox -->
+        <div id="lightbox" class="fixed inset-0 z-50 hidden justify-center items-center gap-16 w-full h-screen bg-black/5 backdrop-blur-xs">
+              <button id="close"><span class="absolute top-8 right-8 text-6xl text-white/80 cursor-pointer">&times;</span></button>
+
+              <button id="btn-prev" onclick="carrosel(-1)" class="hover:scale-110 transition cursor-pointer">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline
+                            points="15 6 9 12 15 18"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </button>
+
+              <img id="img-lightbox" class="w-auto h-full  object-contain object-center" src="" alt="imagem selecionada">
+
+              <button id="btn-next" onclick="carrosel(1)" class="hover:scale-110 transition cursor-pointer">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <polyline
+                            points="9 6 15 12 9 18"
+                            stroke="white"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </button>
+        </div>
+
         <div class="flex flex-col justify-center items-center gap-16">
 
-            <div id="filtro">
-                <ul class="flex justify-center items-center gap-[25px] font-body text-xl cursor-pointer">
-                    <li data-categoria="todos" class="text-xl text-white/65 text-center font-body">Todas</li>
-                    <li data-categoria="neon" class="text-xl text-white/65 text-center font-body">Neon</li>
-                    <li data-categoria="beauty" class="text-xl text-white/65 text-center font-body">Beauty</li>
-                    <li data-categoria="kids" class="text-xl text-white/65 text-center font-body">Kids</li>
-                    <li data-categoria="efeito" class="text-xl text-white/65 text-center font-body">Efeitos</li>
-                    <li data-categoria="corporal" class="text-xl text-white/65 text-center font-body">Corporal</li>
-                    <li data-categoria="gestacional" class="text-xl text-white/65 text-center font-body">Gestacional</li>
+
+            <div>
+                <ul class="flex justify-center items-center gap-[25px] text-xl text-white/65 text-center font-body transition-all">
+                    <li data-categoria="todas" class="btn-filtro btn-ativo text-white/90 border border-white px-4 py-2.5 hover:text-white/90"><button class="cursor-pointer" type="button" onclick="filtrarCategoria()">Todas</button></li>
+                    <li data-categoria="neon" class="btn-filtro"><button class="cursor-pointer hover:text-white/90" type="button" onclick="filtrarCategoria()">Neon</button></li>
+                    <li data-categoria="beauty" class="btn-filtro"><button class="cursor-pointer hover:text-white/90" type="button" onclick="filtrarCategoria()">Beauty</button></li>
+                    <li data-categoria="kids" class="btn-filtro"><button class="cursor-pointer hover:text-white/90" type="button" onclick="filtrarCategoria()">Kids</button></li>
+                    <li data-categoria="efeito" class="btn-filtro"><button class="cursor-pointer hover:text-white/90" type="button" onclick="filtrarCategoria()">Efeitos</button></li>
+                    <li data-categoria="corporal" class="btn-filtro"><button class="cursor-pointer hover:text-white/90" type="button" onclick="filtrarCategoria()">Corporal</button></li>
+                    <li data-categoria="gestacional" class="btn-filtro"><button class="cursor-pointer hover:text-white/90" type="button" onclick="filtrarCategoria()">Gestacional</button></li>
                 </ul>
             </div>
 
-            <!-- colocar de inicio as images principais a serem vistas(isso em cada filtro tbm) e quando o usuario clicar em "ver mais" começa uma aleatorização das proximas imagens da galeria -->
+            
             <!-- fotos -->
-            <div id="galeria-fotos" class="grid grid-cols-5 auto-rows-[200px] w-full h-full gap-4 grid-flow-dense">
+            <div id="galeria-fotos" class="relative grid grid-cols-5 auto-rows-[200px] w-full h-full gap-4 grid-flow-dense">
+                
+                
                 <!-- linha 1 -->
-                <div class="relative  hover:scale-105 transition cursor-pointer row-span-2"><img class="w-full h-full object-cover" src="./assets/images/mcm.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                <div class="relative  hover:scale-105 transition cursor-pointer"><img class="w-full h-full object-cover" src="./assets/images/mcm.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                <div class="relative  hover:scale-105 transition cursor-pointer col-span-2"><img class="w-full h-full object-cover object-[50%_25%]" src="./assets/images/mcm.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                <div class="relative  hover:scale-105 transition cursor-pointer"><img class="w-full h-full object-cover" src="./assets/images/neon.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                <div class="relative  hover:scale-105 transition cursor-pointer"><img class="w-full h-full object-cover" src="./assets/images/neon.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer row-span-2"><img class="foto w-full h-full object-cover" src="./assets/images/mcm.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer"><img class="foto w-full h-full object-cover" src="./assets/images/mcm.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer col-span-2"><img class="foto w-full h-full object-cover object-[50%_25%]" src="./assets/images/mcm.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer"><img class="foto w-full h-full object-cover" src="./assets/images/neon.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer"><img class="foto w-full h-full object-cover" src="./assets/images/neon.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
 
                 <!-- linha 2 -->
-                <div class="relative  hover:scale-105 transition cursor-pointer row-span-2"><img class="w-full h-full object-cover" src="./assets/images/espantalho.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                <div class="relative  hover:scale-105 transition cursor-pointer col-span-2"><img class="w-full h-full object-cover" src="./assets/images/espantalho.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer row-span-2"><img class="foto w-full h-full object-cover" src="./assets/images/espantalho.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer col-span-2"><img class="foto w-full h-full object-cover" src="./assets/images/espantalho.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
 
                 <!-- linha 3 -->
-                <div class="relative  hover:scale-105 transition cursor-pointer col-span-2"><img class="w-full h-full object-cover object-[50%_25%]" src="./assets/images/garoto.jpg" alt="imagem de maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                <div class="relative  hover:scale-105 transition cursor-pointer "><img class="w-full h-full object-cover" src="./assets/images/garoto.jpg" alt="imagem de maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                <div class="relative  hover:scale-105 transition cursor-pointer "><img class="w-full h-full object-cover" src="./assets/images/garoto.jpg" alt="imagem de maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer col-span-2"><img class="foto w-full h-full object-cover object-[50%_25%]" src="./assets/images/garoto.jpg" alt="imagem de maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer "><img class="foto w-full h-full object-cover" src="./assets/images/garoto.jpg" alt="imagem de maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                <div class="moldura relative hover:scale-105 transition cursor-pointer "><img class="foto w-full h-full object-cover" src="./assets/images/garoto.jpg" alt="imagem de maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
 
                 <!-- linha 4 -->
-                 <div class="relative  hover:scale-105 transition cursor-pointer "><img class="w-full h-full object-cover" src="./assets/images/Circo.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                 <div class="relative  hover:scale-105 transition cursor-pointer "><img class="w-full h-full object-cover" src="./assets/images/Circo.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                 <div class="relative  hover:scale-105 transition cursor-pointer col-span-2"><img class="w-full h-full object-cover" src="./assets/images/Circo.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
-                 <div class="relative  hover:scale-105 transition cursor-pointer "><img class="w-full h-full object-cover" src="./assets/images/Circo.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                 <div class="moldura relative hover:scale-105 transition cursor-pointer "><img class="foto w-full h-full object-cover" src="./assets/images/Circo.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                 <div class="moldura relative hover:scale-105 transition cursor-pointer "><img class="foto w-full h-full object-cover" src="./assets/images/Circo.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                 <div class="moldura relative hover:scale-105 transition cursor-pointer col-span-2"><img class="foto w-full h-full object-cover" src="./assets/images/Circo.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
+                 <div class="moldura relative hover:scale-105 transition cursor-pointer "><img class="foto w-full h-full object-cover" src="./assets/images/Circo.jpg" alt="imagem da maquiagem"><div class="absolute z-10 inset-0 bg-black/30 hover:bg-black/0 transition"></div></div>
             </div>
         </div>
 
-        <button class="w-36 h-fit py-3 px-5 text-base text-white/80 text-center font-body outline-1 outline-white/80 hover:text-white hover:outline-white hover:scale-105 cursor-pointer transition">VER MAIS</button>
+        <button id="vermais" onclick="verMais()" class="w-36 h-fit py-3 px-5 text-base text-white/80 text-center font-body outline-1 outline-white/80 hover:text-white hover:outline-white hover:scale-105 cursor-pointer transition">VER MAIS</button>
     </section>
 
-    <footer class="flex justify-between items-center bg-primary border-t border-solid border-btn/5 w-full h-[100px] px-12">
+    <footer class="flex justify-between items-center bg-primary w-full h-[100px] px-12">
         <a href="#hero" class="font-body text-white/80 text-xl max-md:text-base max-sm:text-xs text-center tracking-[3%] cursor-pointer max-sm:hidden">Art & Beauty</a>
         <p class="font-body text-white/80 text-xl max-md:text-base max-sm:text-xs text-center tracking-[3%]">© 2026 Art & Beauty. Todos os direitos reservados.</p>
 
@@ -127,6 +162,10 @@
             </a>
         </div>
     </footer>
+
+    <script src="./assets/js/gallery.js"></script>
+    <script src="./assets/js/galleryHeader.js"></script>
+    <script src="./assets/js/menu.js"></script>
 
 </body>
 </html>

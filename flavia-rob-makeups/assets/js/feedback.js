@@ -1,46 +1,46 @@
 export function initFeedbackMobile(){
     const feedback = [
         {
-                nome: "circo",
-                service: "Neon",
-                text: "Um texto qualquer somente para teste",
-                img: "./assets/images/Circo.jpg"
-            },
-            
-            {
-                nome: "about",
-                service: "Noivas",
-                text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
-                img: "./assets/images/about.png"
-            },
+            nome: "circo",
+            service: "Neon",
+            text: "Um texto qualquer somente para teste",
+            img: "./assets/images/Circo.jpg"
+        },
+        
+        {
+            nome: "about",
+            service: "Noivas",
+            text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
+            img: "./assets/images/about.png"
+        },
 
-            {
-                nome: "galeria",
-                service: "Noivas",
-                text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
-                img: "./assets/images/galeria.jpg"
-            },
+        {
+            nome: "galeria",
+            service: "Noivas",
+            text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
+            img: "./assets/images/galeria.jpg"
+        },
 
-            {
-                nome: "flavia",
-                service: "Noivas",
-                text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
-                img: "./assets/images/flavia.png"
-            },
+        {
+            nome: "flavia",
+            service: "Noivas",
+            text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
+            img: "./assets/images/flavia.png"
+        },
 
-            {
-                nome: "",
-                service: "Noivas",
-                text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
-                img: "./assets/images/MQM.jpg"
-            },
+        {
+            nome: "",
+            service: "Noivas",
+            text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
+            img: "./assets/images/MQM.jpg"
+        },
 
-            {
-                nome: "espantalho",
-                service: "Noivas",
-                text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
-                img: "./assets/images/espantalho.jpg"
-            }
+        {
+            nome: "espantalho",
+            service: "Noivas",
+            text: "Trabalho impecável e muito carinho em cada detalhe do meu grande dia.",
+            img: "./assets/images/espantalho.jpg"
+        }
     ];
 
     let currentIndex = 0;
